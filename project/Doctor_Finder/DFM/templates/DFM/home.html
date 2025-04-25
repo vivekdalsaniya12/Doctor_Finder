@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor Finder</title>
+    <link rel="stylesheet" href="{% static 'DFM/style.css' %}">
+    <link rel="stylesheet" href="{% static 'DFM/style2.css' %}">
+    <link rel="stylesheet" href="{% static 'DFM/style3.css' %}">
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f4f8;
+        }
+    
+        header {
+            background-color: #005a87;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+    
+        nav {
+            background-color: #007acc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 10px 20px;
+            position: relative;
+        }
+    
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+    
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+            font-weight: 500;
+        }
+    
+        .nav-link:hover {
+            background-color: #005a87;
+        }
+    
+        .user-section {
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+    
+        .user-section span {
+            display: inline-block;
+            margin-right: 10px;
+        }
+    
+        .container {
+            padding: 30px;
+        }
+    
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+    
+            .nav-links, .user-section {
+                margin-top: 10px;
+                justify-content: center;
+            }
+        }
+    </style>
+    
+</head>
+<body>
+
+<header>
+    <h1>Doctor Finder</h1>
+    <p>Find the best doctors near you</p>
+</header>
+
+<nav>
+    <div class="nav-links">
+        <a class="nav-link" href="{% url 'home' %}">Home</a>
+        <a class="nav-link" href="{% url 'doctor_profile' %}">Doctor Profile</a>
+        <a class="nav-link" href="{% url 'registration' %}">Registration</a>
+        <a class="nav-link" href="{% url 'doctor_list' %}">Doctor List</a>
+    </div>
+
+    <div class="user-section">
+        {% if user.is_authenticated %}
+            <span>👤 {{ user.username }}</span>
+            <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+        {% else %}
+            <a class="nav-link" href="{% url 'login' %}">Login</a>
+            <a class="nav-link" href="{% url 'register' %}">Register</a>
+        {% endif %}
+    </div>
+</nav>
+
+<div class="container">
+    {% block content %}
+    <div class="embed-map-fixed"><div class="embed-map-container"><iframe class="embed-map-frame" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=600&height=400&hl=en&q=TOPS%20Technologies%20-%20Best%20IT%20Training%20Institute%20in%20Ahmedabad&t=&z=14&ie=UTF8&iwloc=B&output=embed"></iframe><a href="https://sprunkiretake.net" style="font-size:2px!important;color:gray!important;position:absolute;bottom:0;left:0;z-index:1;max-height:1px;overflow:hidden">sprunki retake</a></div><style>.embed-map-fixed{position:relative;text-align:right;width:600px;height:400px;}.embed-map-container{overflow:hidden;background:none!important;width:600px;height:400px;}.embed-map-frame{width:600px!important;height:400px!important;}</style></div>
+    {% endblock content %}
+</div>
+
+</body>
+</html>

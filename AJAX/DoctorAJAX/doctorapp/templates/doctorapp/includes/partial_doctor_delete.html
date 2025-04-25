@@ -1,0 +1,5 @@
+<form method="post" class="ajax-form" action="{% url 'doctor_delete' doctor.id %}">
+    {% csrf_token %}
+    <p>Are you sure you want to delete "{{ doctor.name }}"?</p>
+    <button type="submit">Confirm</button>
+</form>

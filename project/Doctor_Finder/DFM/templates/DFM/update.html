@@ -1,0 +1,16 @@
+{% extends 'DFM/home.html' %}
+{% block content %}
+
+    <div>
+        <div>
+            <h2> Edit Doctor Information </h2>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" value="UPDATE">
+                <a href="{% url 'doctor_list' %}" > Back Page </a>
+            </form>
+        </div>
+    </div>
+
+{% endblock content %}

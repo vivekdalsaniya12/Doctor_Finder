@@ -1,0 +1,5 @@
+<form method="post" class="ajax-form" action="{% url 'doctor_update' doctor.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
