@@ -23,10 +23,10 @@ pipeline {
         }
         stage('docker build') {
             steps {
-                dockerBuild(dockerimage:env.DOCKER_IMAGE,
-                            imagetag:env.IMAGE_TAG,
-                            path:env.PATH
-                           )
+                // dockerimage:env.DOCKER_IMAGE,
+                            // imagetag:env.IMAGE_TAG,
+                            // path:env.PATH
+                dockerBuild()
                 // sh "docker build -t $DOCKER_IMAGE:$IMAGE_TAG ."
             }
         }
