@@ -16,11 +16,12 @@ pipeline {
                          )
             }
         }
-        
-        stage('docker build') {
+        stage('docker build pre checkup ') {
             steps {
                 echo env.DOCKER_IMAGE
             }
+        }
+        stage('docker build') {
             steps {
                 dockerBuild(dockerimage:env.DOCKER_IMAGE,
                             imagetag:env.IMAGE_TAG,
