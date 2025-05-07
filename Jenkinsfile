@@ -18,17 +18,14 @@ pipeline {
         }
         stage('docker build pre checkup ') {
             steps {
-                sh "echo 'hello world'"
                 echo env.DOCKER_IMAGE
             }
         }
         stage('docker build') {
             steps {
-                // dockerimage:env.DOCKER_IMAGE,
-                            // imagetag:env.IMAGE_TAG,
-                            // path:env.PATH
-                dockerBuild()
-                // sh "docker build -t $DOCKER_IMAGE:$IMAGE_TAG ."
+               dockerBuild(dockerimage:env.DOCKER_IMAGE,
+                          imageversion:env.IMAGE_TAG,
+                          path:env.PATH)
             }
         }
         stage('Test cases') {
