@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Test cases') {
             steps {
-                echo "dumy cases"
+                testCases()
             }
         }
         stage('docker Hub push') {
