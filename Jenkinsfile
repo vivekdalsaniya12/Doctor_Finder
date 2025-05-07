@@ -1,4 +1,4 @@
-@Library('Library')_
+// @Library('Library')_
 pipeline {
     agent {
         label "home"
@@ -11,9 +11,8 @@ pipeline {
     stages {
         stage('code clone demo shared') {
             steps {
-                codeClone(branch:'main',
-                          url:'https://github.com/vivekdalsaniya12/Doctor_Finder.git'
-                         )
+                sh "echo 'hello world'"
+                codeClone(branch:'main',url:'https://github.com/vivekdalsaniya12/Doctor_Finder.git')
             }
         }
         stage('docker build pre checkup ') {
