@@ -1,3 +1,3 @@
-def call(String dockerimage, String imageversion){
-  docker build -t dockerimage:imageversion .
+def call(String dockerimage, String imageversion, String path){
+  docker build -t dockerimage:imageversion path
 }
