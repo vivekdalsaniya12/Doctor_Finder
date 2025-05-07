@@ -11,13 +11,21 @@ pipeline {
     stages {
         stage('code clone demo shared') {
             steps {
-                codeClone(branch:'main',url:'https://github.com/vivekdalsaniya12/Doctor_Finder.git')
+                codeClone(branch:'main',
+                          url:'https://github.com/vivekdalsaniya12/Doctor_Finder.git'
+                         )
             }
         }
         
         stage('docker build') {
             steps {
-                dockerBuild(dockerimage:env.DOCKER_IMAGE,imagetag:env.IMAGE_TAG,path:env.PATH)
+                echo env.DOCKER_IMAGE
+            }
+            steps {
+                dockerBuild(dockerimage:env.DOCKER_IMAGE,
+                            imagetag:env.IMAGE_TAG,
+                            path:env.PATH
+                           )
                 // sh "docker build -t $DOCKER_IMAGE:$IMAGE_TAG ."
             }
         }
