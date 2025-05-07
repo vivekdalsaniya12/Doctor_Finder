@@ -6,6 +6,7 @@ pipeline {
     environment {
         DOCKER_IMAGE = 'vivekdalsaniya/doctor_finder'
         IMAGE_TAG = 'latest'
+        PATH = '.'
     }
     stages {
         stage('code clone demo shared') {
@@ -16,7 +17,7 @@ pipeline {
         
         stage('docker build') {
             steps {
-                dockerBuild(dockerimage:'vivekdalsaniya/doctor_finder',imagetag:'latest',path:'.')
+                dockerBuild(dockerimage:env.DOCKER_IMAGE,imagetag:env.IMAGE_TAG,path:env.PATH)
                 // sh "docker build -t $DOCKER_IMAGE:$IMAGE_TAG ."
             }
         }
