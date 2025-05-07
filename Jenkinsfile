@@ -1,4 +1,4 @@
-@Library('Library') _
+@Library('Library')_
 pipeline {
     agent {
         label "home"
