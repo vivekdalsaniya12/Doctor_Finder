@@ -16,7 +16,7 @@ pipeline {
         
         stage('docker build') {
             steps {
-                build(docker_image:'vivekdalsaniya/doctor_finder', image_tag: 'latest', path: '.')
+                dockerBuild(dockerimage:'vivekdalsaniya/doctor_finder',imagetag:'latest',path:'.')
                 // sh "docker build -t $DOCKER_IMAGE:$IMAGE_TAG ."
             }
         }
