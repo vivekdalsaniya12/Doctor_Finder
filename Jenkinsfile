@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('code clone demo shared') {
             steps {
-                codeClone("main","https://github.com/vivekdalsaniya12/Doctor_Finder.git")
+                codeClone(branch:'main',url:'https://github.com/vivekdalsaniya12/Doctor_Finder.git')
             }
         }
         
