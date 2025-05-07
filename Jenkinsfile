@@ -23,9 +23,7 @@ pipeline {
         }
         stage('docker build') {
             steps {
-               dockerBuild(dockerimage:env.DOCKER_IMAGE,
-                          imageversion:env.IMAGE_TAG,
-                          path:env.PATH)
+               dockerBuild(env.DOCKER_IMAGE,env.IMAGE_TAG,env.PATH)
             }
         }
         stage('Test cases') {
