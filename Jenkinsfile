@@ -18,6 +18,7 @@ pipeline {
         }
         stage('docker build pre checkup ') {
             steps {
+                sh "echo hello world"
                 echo env.DOCKER_IMAGE
             }
         }
