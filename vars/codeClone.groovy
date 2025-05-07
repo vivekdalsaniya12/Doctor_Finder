@@ -1,3 +1,3 @@
-def call(){
-  git branch: ${branch} , url: ${url}
+def call(Map x){
+  git branch: x.branch , url: x.url
 }
