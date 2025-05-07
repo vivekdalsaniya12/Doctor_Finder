@@ -1,5 +1,5 @@
 def call(Map x){
-  sh """
+  sh '''
         docker build -t ${x.dockerimage}:${x.imagetag} ${x.path}
-    """
+    '''
 }
