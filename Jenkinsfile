@@ -21,12 +21,9 @@ pipeline {
         }
         stage('docker Hub push') {
             steps {
-                withCredentials ([usernamePassword(credentialsId:'dockercreds',usernameVariable:'USERNAME',passwordVariable:'PASSWORD')]) {
-                    sh '''
-                        echo "$PASSWORD" | docker login -u "$USERNAME" --password-stdin
-                        docker push "vivekdalsaniya/doctor_finder":"latest"
-                        docker logout
-                    '''
+                withCredentials ([usernamePassword(credentialsId:'dockercreds',usernameVariable:'USERNAME',passwordVariable:'PASSWORD')]) 
+                {
+                    dockerPush(USERNAME:$USERNAME,PASSWORD:$PASSWORD,DOCKER_IMAGE:"vivekdalsaniya/doctor_finder",IMAGE_TAG:"latest")
                 }
             }
         }
