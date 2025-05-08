@@ -3,6 +3,11 @@ pipeline {
     agent {
         label "home"
     }
+    environment{
+        DOCKER_IMAGE = "vivekdalsaniya/Doctor_finder"
+        IMAGE_TAG = "latest"
+        PATH = "."
+    }
     stages {
         stage('code clone demo shared') {
             steps {
@@ -11,7 +16,7 @@ pipeline {
         }
         stage('docker build') {
             steps {
-               dockerBuild("vivekdalsaniya/doctor_finder","latest",".")
+               dockerBuild(env.DOCKER_IMAGE,env.IMAGE_TAG,env.PATH)
             }
         }
         stage('Test cases') {
