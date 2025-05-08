@@ -11,7 +11,7 @@ pipeline {
         }
         stage('docker build') {
             steps {
-               dockerBuild("vivekdalsaniya/doctor-finder","latest",".")
+               dockerBuild("vivekdalsaniya/doctor_finder","latest",".")
             }
         }
         stage('Test cases') {
