@@ -3,11 +3,11 @@ pipeline {
     agent {
         label "home"
     }
-    environment{
-        DOCKER_IMAGE = "vivekdalsaniya/Doctor_finder"
-        IMAGE_TAG = "latest"
-        PATH = "."
-    }
+    // environment{
+    //     DOCKER_IMAGE = "vivekdalsaniya/Doctor_finder"
+    //     IMAGE_TAG = "latest"
+    //     PATH = "."
+    // }
     stages {
         stage('code clone demo shared') {
             steps {
@@ -16,7 +16,7 @@ pipeline {
         }
         stage('docker build') {
             steps {
-               dockerBuild(env.DOCKER_IMAGE,env.IMAGE_TAG,env.PATH)
+               dockerBuild("vivekdalsaniya/Doctor_finder","latest",".")
             }
         }
         stage('Test cases') {
@@ -29,7 +29,7 @@ pipeline {
                 withCredentials ([usernamePassword(credentialsId:'dockercreds',usernameVariable:'USERNAME',passwordVariable:'PASSWORD')]) {
                     sh '''
                         echo "$PASSWORD" | docker login -u "$USERNAME" --password-stdin
-                        docker push $DOCKER_IMAGE:$IMAGE_TAG
+                        docker push "vivekdalsaniya/Doctor_finder":"latest"
                         docker logout
                     '''
                 }
