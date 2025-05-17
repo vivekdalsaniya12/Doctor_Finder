@@ -6,7 +6,8 @@ pipeline {
     stages {
         stage('code clone demo shared') {
             steps {
-                codeClone(branch:'main',url:'https://github.com/vivekdalsaniya12/Doctor_Finder.git')
+                // codeClone(branch:'main',url:'https://github.com/vivekdalsaniya12/Doctor_Finder.git')
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/vivekdalsaniya12/Doctor_Finder.git']])
             }
         }
         stage('docker build') {
