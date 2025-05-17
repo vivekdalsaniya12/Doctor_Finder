@@ -8,6 +8,7 @@ pipeline {
             steps {
                 // codeClone(branch:'main',url:'https://github.com/vivekdalsaniya12/Doctor_Finder.git')
                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/vivekdalsaniya12/Doctor_Finder.git']])
+                // shree Ram Jay Ram jay Jay Ram
             }
         }
         stage('docker build') {
