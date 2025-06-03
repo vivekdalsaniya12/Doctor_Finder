@@ -11,7 +11,7 @@ pipeline {
         }
         stage('docker build') {
             steps {
-               dockerBuild("vivekdalsaniya/doctor_finder","latest",".")
+               dockerBuild("vivekdalsaniya/doctor_finder","${BUILD_NUMBER}",".")
             }
         }
         stage('Test cases') {
@@ -23,7 +23,7 @@ pipeline {
             steps {
                 withCredentials ([usernamePassword(credentialsId:'dockercreds',usernameVariable:'USERNAME',passwordVariable:'PASSWORD')]) 
                 {
-                    dockerPush(USERNAME:"${USERNAME}",PASSWORD:"${PASSWORD}",DOCKER_IMAGE:"vivekdalsaniya/doctor_finder",IMAGE_TAG:"latest")
+                    dockerPush(USERNAME:"${USERNAME}",PASSWORD:"${PASSWORD}",DOCKER_IMAGE:"vivekdalsaniya/doctor_finder",IMAGE_TAG:"${BUILD_NUMBER}")
                 }
             }
         }
