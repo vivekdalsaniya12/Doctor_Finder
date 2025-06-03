@@ -1,8 +1,6 @@
 @Library('Library') _
 pipeline {
-    agent {
-        label "home"
-    }
+    agent any
     stages {
         stage('code clone demo shared') {
             steps {
